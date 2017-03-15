@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onNotFastClick(View view) {
                 //
-                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet, MainActivity.this,
-                        new ItemSelectorModel().gainData("学校"), 3);
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect("学校",id_gotoselet, MainActivity.this,
+                        new ItemSelectorModel().gainData("学校"), -1);
             }
         });
         id_gotoselet2 = (TextView) findViewById(R.id.id_gotoselet_2);
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onNotFastClick(View view) {
                 //
-                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet2, MainActivity.this,
-                        new ItemSelectorModel().gainData("性别"), 1);
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect("性别",id_gotoselet2, MainActivity.this,
+                        new ItemSelectorModel().gainData("性别"), 0);
             }
         });
 
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //
-                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet3, MainActivity.this,
-                        new ItemSelectorModel().gainData("性别"), 1);
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect("年龄",id_gotoselet3, MainActivity.this,
+                        new ItemSelectorModel().gainData("年龄"), 20);
             }
         });
     }

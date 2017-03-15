@@ -13,8 +13,8 @@ public class ClassicItemSelectorActivity extends ClassicActivity
         return R.layout.activity_classic_item_selector;
     }
 
-    int mSelectItemCount;
-    ItemSelectDataWrapper mItemSelectDataWrapper;
+    private int mSelectItemCount;
+    private ItemSelectDataWrapper mItemSelectDataWrapper;
 
     @Override
     protected void initView() {
@@ -22,8 +22,12 @@ public class ClassicItemSelectorActivity extends ClassicActivity
         mSelectItemCount = getBundleExtraInt1();
 
         mItemSelectDataWrapper = (ItemSelectDataWrapper) getBundleExtra().getSerializable("bundleExtraKey2");
+        String showTitle =getBundleExtra().getString("bundleExtraKey3");
+
+        setAppBarTitle(showTitle);
+        //
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.id_frame_layout_content, ClassicItemSelectorFragment.newInstance("", "", mSelectItemCount, mItemSelectDataWrapper))
+                .replace(R.id.id_frame_layout_content, ClassicItemSelectorFragment.newInstance(showTitle, "", mSelectItemCount, mItemSelectDataWrapper))
                 .commitAllowingStateLoss();
 
     }
@@ -46,6 +50,11 @@ public class ClassicItemSelectorActivity extends ClassicActivity
         }
         return super.onOptionsItemSelected(item);
     }*/
+
+    @Override
+    public void setAppBarTitle(CharSequence title) {
+        super.setAppBarTitle(title);
+    }
 
     private void finishSelectOperator() {
         Intent intent = new Intent();

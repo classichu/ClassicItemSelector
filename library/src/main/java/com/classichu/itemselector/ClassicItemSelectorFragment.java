@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.classichu.adapter.recyclerview.ClassicRVHeaderFooterAdapter;
+import com.classichu.adapter.widget.ClassicEmptyView;
 import com.classichu.classichu.classic.ClassicFragment;
 import com.classichu.itemselector.adapter.ItemSelectRVHeaderFooterAdapter;
 import com.classichu.itemselector.bean.ItemSelectBean;
@@ -38,6 +40,7 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
 
     private List<ItemSelectBean> mItemSelectBeanList = new ArrayList<>();
     private int mSelectItemCount;
+    private String mShowTitle;
 
     /**
      * Use this factory method to create a new instance of
@@ -68,8 +71,12 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
             mParam3 = getArguments().getInt(ARG_PARAM3);
             mParam4 = getArguments().getSerializable(ARG_PARAM4);
         }
-        mSelectItemCount = mParam3;
+        mSelectItemCount = mParam3 < 1 ? 1 : mParam3;//fix min
         mItemSelectDataWrapper = (ItemSelectDataWrapper) mParam4;
+        if (mItemSelectDataWrapper != null && mItemSelectDataWrapper.getItemSelectBeanList().size() < mSelectItemCount) {
+            mSelectItemCount = mItemSelectDataWrapper.getItemSelectBeanList().size();//fix max
+        }
+        mShowTitle = mParam1;
     }
 
 
@@ -78,8 +85,14 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
         return R.layout.fragment_classic_item_selector;
     }
 
+    private ClassicItemSelectorActivity classicItemSelectorActivity;
+
     @Override
     protected void initView(View view) {
+        if (getActivity() instanceof ClassicItemSelectorActivity) {
+            classicItemSelectorActivity = (ClassicItemSelectorActivity) getActivity();
+        }
+
         if (mItemSelectDataWrapper != null) {
             mClassicRVHeaderFooterAdapter.refreshDataList(mItemSelectDataWrapper.getItemSelectBeanList());
         }
@@ -129,6 +142,32 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
     protected ClassicRVHeaderFooterAdapter configClassicRVHeaderFooterAdapter() {
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).build());
         ItemSelectRVHeaderFooterAdapter adapter = new ItemSelectRVHeaderFooterAdapter(getActivity(), mItemSelectBeanList, R.layout.item_list_selector);
+        ClassicEmptyView classicEmptyView = new ClassicEmptyView(getContext());
+        classicEmptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        classicEmptyView.setEmptyText("暂无数据,点我返回重试");
+        classicEmptyView.setOnEmptyViewClickListener(new ClassicEmptyView.OnEmptyViewClickListener() {
+            @Override
+            public void onClickTextView(View view) {
+                super.onClickTextView(view);
+                //
+                getActivity().onBackPressed();
+            }
+
+            @Override
+            public void onClickImageView(View view) {
+                super.onClickImageView(view);
+                //
+                getActivity().onBackPressed();
+            }
+
+            @Override
+            public void onClickEmptyView(View view) {
+                super.onClickEmptyView(view);
+                //
+                getActivity().onBackPressed();
+            }
+        });
+        adapter.setEmptyView(classicEmptyView);
         adapter.setOnItemClickListener(new ClassicRVHeaderFooterAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
@@ -145,8 +184,10 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
                     }
                     //设置当前选中
                     mItemSelectBeanList.get(position).setSelected(!itemSelectBean.isSelected());
+                    int nowSelectItemCount = getNowSelectItemCount();
+                    changeTitle(nowSelectItemCount);
                     //再次判断
-                    if (getNowSelectItemCount() < mSelectItemCount) {
+                    if (nowSelectItemCount < mSelectItemCount) {
                         //继续选择
                         mClassicRVHeaderFooterAdapter.notifyDataSetChanged();
                     } else {
@@ -167,6 +208,18 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
             }
         });
         return adapter;
+    }
+
+    private void changeTitle(int nowSelectItemCount) {
+        if (classicItemSelectorActivity != null) {
+            StringBuilder stringBuilder = new StringBuilder(mShowTitle);
+            stringBuilder.append("(");
+            stringBuilder.append(nowSelectItemCount);
+            stringBuilder.append("/");
+            stringBuilder.append(mSelectItemCount);
+            stringBuilder.append(")");
+            classicItemSelectorActivity.setAppBarTitle(stringBuilder.toString());
+        }
     }
 
     public void resetAllSelectedItem() {

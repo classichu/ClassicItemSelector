@@ -19,12 +19,13 @@ public class ClassicItemSelectorDataHelper {
     private static View mClickView;
     public static final int ITEM_SELECT_REQUEST_CODE = 1214;
 
-    public static void setDataAndToItemSelect(View clickView, FragmentActivity fragmentActivity, List<ItemSelectBean> imageShowBeanList) {
-        setDataAndToItemSelect(clickView, fragmentActivity, imageShowBeanList, 1);
+    public static void setDataAndToItemSelect(String showTitle, View clickView, FragmentActivity fragmentActivity, List<ItemSelectBean> imageShowBeanList) {
+        setDataAndToItemSelect(showTitle, clickView, fragmentActivity, imageShowBeanList, 1);
     }
 
 
-    public static void setDataAndToItemSelect(View clickView, FragmentActivity fragmentActivity, List<ItemSelectBean> imageShowBeanList, int maxCount) {
+    public static void setDataAndToItemSelect(String showTitle, View clickView, FragmentActivity fragmentActivity,
+                                              List<ItemSelectBean> imageShowBeanList, int maxCount) {
         mClickView = clickView;
         //
         ItemSelectDataWrapper itemSelectDataWrapper = null;
@@ -40,6 +41,7 @@ public class ClassicItemSelectorDataHelper {
         Bundle bundle = new Bundle();
         bundle.putInt("bundleExtraKey1", maxCount);
         bundle.putSerializable("bundleExtraKey2", itemSelectDataWrapper);
+        bundle.putSerializable("bundleExtraKey3", showTitle);
         intent.putExtras(bundle);
         //
         fragmentActivity.startActivityForResult(intent, ITEM_SELECT_REQUEST_CODE);

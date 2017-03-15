@@ -21,6 +21,7 @@ public class ItemSelectorModel {
             }*/
             itemSelectBeanList.add(itemSelectBean);
         }
+       // itemSelectBeanList.clear();
         return itemSelectBeanList;
     }
 }
