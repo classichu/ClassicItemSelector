@@ -5,12 +5,12 @@ import android.content.Intent;
 import com.classichu.classichu.classic.ClassicActivity;
 import com.classichu.itemselector.bean.ItemSelectDataWrapper;
 
-public class ItemSelectorActivity extends ClassicActivity
-        implements ItemSelectorFragment.OnFragmentInteractionListener {
+public class ClassicItemSelectorActivity extends ClassicActivity
+        implements ClassicItemSelectorFragment.OnFragmentInteractionListener {
 
     @Override
     protected int setupLayoutResId() {
-        return R.layout.activity_item_selector;
+        return R.layout.activity_classic_item_selector;
     }
 
     int mSelectItemCount;
@@ -23,7 +23,7 @@ public class ItemSelectorActivity extends ClassicActivity
 
         mItemSelectDataWrapper = (ItemSelectDataWrapper) getBundleExtra().getSerializable("bundleExtraKey2");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.id_frame_layout_content, ItemSelectorFragment.newInstance("", "", mSelectItemCount, mItemSelectDataWrapper))
+                .replace(R.id.id_frame_layout_content, ClassicItemSelectorFragment.newInstance("", "", mSelectItemCount, mItemSelectDataWrapper))
                 .commitAllowingStateLoss();
 
     }

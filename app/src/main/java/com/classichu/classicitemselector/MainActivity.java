@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.classichu.classichu.basic.listener.OnNotFastClickListener;
-import com.classichu.itemselector.ItemSelectDataHelper;
+import com.classichu.itemselector.ClassicItemSelectorDataHelper;
 import com.classichu.itemselector.bean.ItemSelectBean;
 import com.classichu.itemselector.model.ItemSelectorModel;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onNotFastClick(View view) {
                 //
-                ItemSelectDataHelper.setDataAndToItemSelect(id_gotoselet, MainActivity.this,
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet, MainActivity.this,
                         new ItemSelectorModel().gainData("学校"), 3);
             }
         });
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onNotFastClick(View view) {
                 //
-                ItemSelectDataHelper.setDataAndToItemSelect(id_gotoselet2, MainActivity.this,
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet2, MainActivity.this,
                         new ItemSelectorModel().gainData("性别"), 1);
             }
         });
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //
-                ItemSelectDataHelper.setDataAndToItemSelect(id_gotoselet3, MainActivity.this,
+                ClassicItemSelectorDataHelper.setDataAndToItemSelect(id_gotoselet3, MainActivity.this,
                         new ItemSelectorModel().gainData("性别"), 1);
             }
         });
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //
-        ItemSelectDataHelper.callAtOnActivityResult(requestCode, resultCode, data, new ItemSelectDataHelper.ItemSelectBackData() {
+        ClassicItemSelectorDataHelper.callAtOnActivityResult(requestCode, resultCode, data, new ClassicItemSelectorDataHelper.ItemSelectBackData() {
 
             @Override
             public void backData(View clickView, List<ItemSelectBean> itemSelectBeanList) {

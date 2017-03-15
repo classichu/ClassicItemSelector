@@ -15,7 +15,7 @@ import java.util.List;
  * Created by louisgeek on 2017/3/15.
  */
 
-public class ItemSelectDataHelper {
+public class ClassicItemSelectorDataHelper {
     private static View mClickView;
     public static final int ITEM_SELECT_REQUEST_CODE = 1214;
 
@@ -35,7 +35,7 @@ public class ItemSelectDataHelper {
             itemSelectDataWrapper = new ItemSelectDataWrapper(imageShowBeanList);
         }
 
-        Intent intent = new Intent(fragmentActivity, ItemSelectorActivity.class);
+        Intent intent = new Intent(fragmentActivity, ClassicItemSelectorActivity.class);
         //
         Bundle bundle = new Bundle();
         bundle.putInt("bundleExtraKey1", maxCount);

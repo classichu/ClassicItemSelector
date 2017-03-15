@@ -21,18 +21,18 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ItemSelectorFragment.OnFragmentInteractionListener} interface
+ * {@link ClassicItemSelectorFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ItemSelectorFragment#newInstance} factory method to
+ * Use the {@link ClassicItemSelectorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ItemSelectorFragment extends ClassicFragment {
+public class ClassicItemSelectorFragment extends ClassicFragment {
     private OnFragmentInteractionListener mInteractionListener;
     private static final String ARG_PARAM4 = "param4";
     private Serializable mParam4;
     private ItemSelectDataWrapper mItemSelectDataWrapper;
 
-    public ItemSelectorFragment() {
+    public ClassicItemSelectorFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +45,11 @@ public class ItemSelectorFragment extends ClassicFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ItemSelectorFragment.
+     * @return A new instance of fragment ClassicItemSelectorFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ItemSelectorFragment newInstance(String param1, String param2, int param3, Serializable serializable) {
-        ItemSelectorFragment fragment = new ItemSelectorFragment();
+    public static ClassicItemSelectorFragment newInstance(String param1, String param2, int param3, Serializable serializable) {
+        ClassicItemSelectorFragment fragment = new ClassicItemSelectorFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +75,7 @@ public class ItemSelectorFragment extends ClassicFragment {
 
     @Override
     protected int setupLayoutResId() {
-        return R.layout.fragment_item_selector;
+        return R.layout.fragment_classic_item_selector;
     }
 
     @Override
