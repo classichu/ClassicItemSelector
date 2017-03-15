@@ -242,8 +242,4 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
         return nowSelectedCount;
     }
 
-    @Override
-    protected int configSwipeRefreshLayoutResId() {
-        return R.id.id_swipe_refresh_layout;
-    }
 }

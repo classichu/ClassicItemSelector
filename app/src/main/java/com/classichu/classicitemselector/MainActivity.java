@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                         new ItemSelectorModel().gainData("年龄"), 20);
             }
         });
+
+
+
     }
 
     @Override
