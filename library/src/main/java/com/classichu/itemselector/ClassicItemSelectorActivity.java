@@ -26,7 +26,7 @@ public class ClassicItemSelectorActivity extends ClassicActivity
 
         setAppBarTitle(showTitle);
         //
-        getSupportFragmentManager().beginTransaction()
+      getSupportFragmentManager().beginTransaction()
                 .replace(R.id.id_frame_layout_content, ClassicItemSelectorFragment.newInstance(showTitle, "", mSelectItemCount, mItemSelectDataWrapper))
                 .commitAllowingStateLoss();
 

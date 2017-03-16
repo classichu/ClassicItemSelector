@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         id_gotoselet = (TextView) findViewById(R.id.id_gotoselet);
         id_gotoselet.setOnClickListener(new OnNotFastClickListener() {
             @Override

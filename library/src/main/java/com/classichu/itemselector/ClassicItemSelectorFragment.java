@@ -188,8 +188,8 @@ public class ClassicItemSelectorFragment extends ClassicFragment {
                     changeTitle(nowSelectItemCount);
                     //再次判断
                     if (nowSelectItemCount < mSelectItemCount) {
-                        //继续选择
-                        mClassicRVHeaderFooterAdapter.notifyDataSetChanged();
+                        //继续选择 局部刷新
+                        mClassicRVHeaderFooterAdapter.replaceData(position,mItemSelectBeanList.get(position));
                     } else {
                         //结束选择
                         onListItemSelected();

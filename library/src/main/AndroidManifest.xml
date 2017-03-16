@@ -5,9 +5,10 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ClassicItemSelectorActivity"
+        <activity
+            android:name=".ClassicItemSelectorActivity"
             android:theme="@style/ClassicTheme.Transparent"
-            ></activity>
+            />
     </application>
 
 </manifest>
