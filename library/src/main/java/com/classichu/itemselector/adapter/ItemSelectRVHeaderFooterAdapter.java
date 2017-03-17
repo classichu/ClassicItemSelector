@@ -42,10 +42,10 @@ public class ItemSelectRVHeaderFooterAdapter extends ClassicRVHeaderFooterAdapte
     @Override
     public void findBindView(int pos, ClassicRVHeaderFooterViewHolder classicRVHeaderFooterViewHolder) {
         if (mDataList!=null&&mDataList.size()>0){
-        TextView id_tv_item_title = classicRVHeaderFooterViewHolder.findBindView(R.id.id_tv_item_title);
+        TextView id_tv_item_title = classicRVHeaderFooterViewHolder.findBindItemView(R.id.id_tv_item_title);
         id_tv_item_title.setText(mDataList.get(pos).getItemTitle());
 
-        ImageView id_tv_item_image = classicRVHeaderFooterViewHolder.findBindView(R.id.id_tv_item_image);
+        ImageView id_tv_item_image = classicRVHeaderFooterViewHolder.findBindItemView(R.id.id_tv_item_image);
         id_tv_item_image.setSelected(mDataList.get(pos).isSelected());
     }}
 }
