@@ -9,6 +9,16 @@ import java.io.Serializable;
 public class ItemSelectBean implements Serializable {
     private int itemid;
     private String itemTitle;
+
+    public String getItemKey() {
+        return itemKey;
+    }
+
+    public void setItemKey(String itemKey) {
+        this.itemKey = itemKey;
+    }
+
+    private String itemKey;
     private boolean isSelected;
 
     public int getItemid() {
