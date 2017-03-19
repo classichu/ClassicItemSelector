@@ -1,4 +1,4 @@
-package com.classichu.itemselector;
+package com.classichu.itemselector.helper;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import com.classichu.itemselector.ClassicItemSelectorActivity;
+import com.classichu.itemselector.R;
 import com.classichu.itemselector.bean.ItemSelectBean;
 import com.classichu.itemselector.bean.ItemSelectDataWrapper;
 

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.classichu.classichu.basic.listener.OnNotFastClickListener;
-import com.classichu.itemselector.ClassicItemSelectorDataHelper;
+import com.classichu.itemselector.helper.ClassicItemSelectorDataHelper;
 import com.classichu.itemselector.bean.ItemSelectBean;
 import com.classichu.itemselector.model.ItemSelectorModel;
 
